@@ -6,6 +6,8 @@ namespace StudyTimeManager
 {
     public class Form3 : Form
     {
+        private Button btnBack, btnNext;
+
         public Form3()
         {
             InitUI();
@@ -18,6 +20,7 @@ namespace StudyTimeManager
             this.BackColor = Color.FromArgb(235, 215, 255);
             this.StartPosition = FormStartPosition.CenterScreen;
 
+            // Judul
             Label lblTitle = new Label()
             {
                 Text = "💡 Tips Belajar Efektif",
@@ -28,6 +31,7 @@ namespace StudyTimeManager
             };
             Controls.Add(lblTitle);
 
+            // Daftar tips
             Label lblTips = new Label()
             {
                 Text =
@@ -44,6 +48,48 @@ namespace StudyTimeManager
                 AutoSize = true
             };
             Controls.Add(lblTips);
+
+            // Tombol Back
+            btnBack = new Button()
+            {
+                Text = "⬅ Back",
+                Location = new Point(50, 500),
+                Size = new Size(120, 40),
+                BackColor = Color.FromArgb(180, 120, 230),
+                ForeColor = Color.White,
+                Font = new Font("Poppins", 10, FontStyle.Bold)
+            };
+            btnBack.Click += BtnBack_Click;
+            Controls.Add(btnBack);
+
+            // Tombol Next
+            btnNext = new Button()
+            {
+                Text = "Next ➡",
+                Location = new Point(620, 500),
+                Size = new Size(120, 40),
+                BackColor = Color.FromArgb(140, 100, 210),
+                ForeColor = Color.White,
+                Font = new Font("Poppins", 10, FontStyle.Bold)
+            };
+            btnNext.Click += BtnNext_Click;
+            Controls.Add(btnNext);
+        }
+
+        private void BtnBack_Click(object sender, EventArgs e)
+        {
+            // Kembali ke Form2 (Jadwal Belajar)
+            this.Hide();
+            Form2 jadwal = new Form2();
+            jadwal.Show();
+        }
+
+        private void BtnNext_Click(object sender, EventArgs e)
+        {
+            // Misalnya ke halaman login lagi (bisa diganti form lain)
+            this.Hide();
+            LoginForm login = new LoginForm();
+            login.Show();
         }
     }
 }
